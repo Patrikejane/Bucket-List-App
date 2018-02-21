@@ -46,6 +46,36 @@
 
 
     </div>
+    <script>
 
+      var app = new Vue({
+        el:'#app',
+        data:{
+            Title:'Bucket List',
+            bucket:{
+              title:'',
+              text:''
+            },
+            bucketList:[{
+              title:'Everest base Camp',
+              text: 'Everest base Camp in 2018',
+              date: new Date(Date.now()).toLocaleString()
+            }
+          ]
+        },
+        methods:{
+          addBucket(){
+            let {title,text} = this.bucket
+            this.bucketList.push({title,text,date:new Date(Date.now()).toLocaleString()})
+            this.bucket.title =''
+            this.bucket.text =''
+          },
+          removebucket(index){
+            this.bucketList.splice(index,1)
+          }
+        }
+
+      })
+    </script>
   </body>
 </html>
